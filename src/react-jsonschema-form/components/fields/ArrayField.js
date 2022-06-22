@@ -367,9 +367,9 @@ class ArrayField extends Component {
         newErrorSchema = {};
         const errorSchema = this.props.errorSchema;
         for (let i in errorSchema) {
-          if (i == index) {
+          if (i === index) {
             newErrorSchema[newIndex] = errorSchema[index];
-          } else if (i == newIndex) {
+          } else if (i === newIndex) {
             newErrorSchema[index] = errorSchema[newIndex];
           } else {
             newErrorSchema[i] = errorSchema[i];

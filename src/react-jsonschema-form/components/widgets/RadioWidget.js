@@ -24,7 +24,7 @@ function RadioWidget(props) {
       {enumOptions.map((option, i) => {
         const checked = option.value === value;
         const itemDisabled =
-          enumDisabled && enumDisabled.indexOf(option.value) != -1;
+          enumDisabled && enumDisabled.indexOf(option.value) !== -1;
         const disabledCls =
           disabled || itemDisabled || readonly ? "disabled" : "";
         const radio = (

@@ -21,7 +21,7 @@ function CheckboxesWidget(props) {
       {enumOptions.map((option, index) => {
         const checked = value.indexOf(option.value) !== -1;
         const itemDisabled =
-          enumDisabled && enumDisabled.indexOf(option.value) != -1;
+          enumDisabled && enumDisabled.indexOf(option.value) !== -1;
         const disabledCls =
           disabled || itemDisabled || readonly ? "disabled" : "";
         const checkbox = (

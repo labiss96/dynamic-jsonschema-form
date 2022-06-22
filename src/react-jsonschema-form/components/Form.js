@@ -165,7 +165,7 @@ export default class Form extends Component {
     const { errors, errorSchema, schema, uiSchema } = this.state;
     const { ErrorList, showErrorList, formContext } = this.props;
 
-    if (errors.length && showErrorList != false) {
+    if (errors.length && showErrorList !== false) {
       return (
         <ErrorList
           errors={errors}
