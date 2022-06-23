@@ -605,22 +605,20 @@ export function findSchemaDefinition($ref, rootSchema = {}, onRetrieveSchema = n
   if ($ref.startsWith("@")) {
     $ref = decodeURIComponent($ref.substring(1));
     if (onRetrieveSchema == null)
-      throw new Error(`Could not find a onRetrieveSchema Callback.`);
+      throw new Error(`onRetrieveSchema props does not allow null`);
     current = onRetrieveSchema($ref);
   } else if ($ref.startsWith("#")) {
     // Decode URI fragment representation.
     $ref = decodeURIComponent($ref.substring(1));
     current = jsonpointer.get(rootSchema, $ref);
-  } else {
+  } else
     throw new Error(`Could not find a definition for ${origRef}.`);
-  }
 
-  if (current === undefined) {
+  if (current === undefined)
     throw new Error(`Could not find a definition for ${origRef}.`);
-  }
-  if (current.hasOwnProperty("$ref")) {
+  if (current.hasOwnProperty("$ref"))
     return findSchemaDefinition(current.$ref, rootSchema, onRetrieveSchema);
-  }
+    
   return current;
 }
 
@@ -920,7 +918,7 @@ function withDependentSchema(
   // Resolve $refs inside oneOf.
   const resolvedOneOf = oneOf.map(subschema =>
     subschema.hasOwnProperty("$ref")
-      ? resolveReference(subschema, rootSchema, formData)
+      ? resolveReference(subschema, rootSchema, formData, onRetrieveSchema)
       : subschema
   );
   return withExactlyOneSubschema(
